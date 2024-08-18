@@ -23,7 +23,7 @@ def check_credentials(username, password):
 
 # Login Page
 def login_page():
-    st.markdown("<h1 style='text-align: center; color: #007bff;'>Login</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color:rgb(241 6 201);'>Login</h1>", unsafe_allow_html=True)
     with st.form("login_form"):
         username = st.text_input("Username")
         print(username)
@@ -71,14 +71,14 @@ def main_page():
                 padding: 10px 20px;
             }
             .stButton>button {
-                background-color: #007bff;
+                background-color: rgb(241 6 201);
                 color: white;
                 border-radius: 5px;
                 padding: 10px 20px;
             }
             .stSelectbox label, .stTextInput label {
                 font-weight: bold;
-                color: #007bff;
+                color: rgb(241 6 201);
             }
             .table-container {
                 background-color: white;
@@ -90,7 +90,7 @@ def main_page():
         </style>
         """, unsafe_allow_html=True)
     
-    st.markdown("<h1 style='text-align: center; color: #007bff;'>BSL Township Occupancy Status</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: rgb(241 6 201);'>BSL Township Occupancy Status</h1>", unsafe_allow_html=True)
     # Define the columns that can be selected with proper formatting
     columns = {
         'address': 'Address',
