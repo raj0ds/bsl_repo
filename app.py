@@ -39,7 +39,6 @@ def login_page():
             else:
                 st.error("Invalid username or password")
 
-# Main Page
 def main_page():
     st.markdown("""
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -81,16 +80,51 @@ def main_page():
                 color: rgb(241 6 201);
             }
             .table-container {
-                background-color: white;
                 padding: 20px;
                 border-radius: 10px;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
                 margin: 20px auto;
+                overflow-x: auto; /* Add scrollbar if needed */
+            }
+            /* Light mode styles */
+            @media (prefers-color-scheme: light) {
+                body {
+                    background-color: #f8f9fa;
+                }
+                .table-container {
+                    background-color: white;
+                }
+                .table-container table {
+                    background-color: #ffffff;
+                    color: #212529;
+                }
+                .table-container th, .table-container td {
+                    background-color: #f8f9fa;
+                    color: #212529;
+                }
+            }
+            /* Dark mode styles */
+            @media (prefers-color-scheme: dark) {
+                body {
+                    background-color: #343a40;
+                }
+                .table-container {
+                    background-color: #343a40;
+                }
+                .table-container table {
+                    background-color: #343a40;
+                    color: #f8f9fa;
+                }
+                .table-container th, .table-container td {
+                    background-color: #495057;
+                    color: #f8f9fa;
+                }
             }
         </style>
-        """, unsafe_allow_html=True)
-    
+    """, unsafe_allow_html=True)
+
     st.markdown("<h1 style='text-align: center; color: rgb(241 6 201);'>BSL Township Occupancy Status</h1>", unsafe_allow_html=True)
+
     # Define the columns that can be selected with proper formatting
     columns = {
         'address': 'Address',
@@ -100,6 +134,7 @@ def main_page():
         'licence': 'Licence',
         # Add other columns here if needed
     }
+
     # Create a form-like layout using Streamlit's columns and widgets
     with st.container():
         # Dropdown to select the column
@@ -141,13 +176,14 @@ def main_page():
                     # Apply Bootstrap styles to the DataFrame
                     styled_df = df.style.set_table_attributes('class="table table-striped table-bordered"').set_table_styles([
                         {'selector': 'thead th', 'props': [('background-color', '#007bff'), ('color', 'white')]},
-                        {'selector': 'tbody td', 'props': [('padding', '10px'), ('border', '1px solid #ddd'), ('background-color', '#f8f9fa'), ('color', '#212529')]}
+                        {'selector': 'tbody td', 'props': [('padding', '10px'), ('border', '1px solid #ddd')]}
                     ])
 
                     # Display the styled DataFrame in Streamlit
                     st.markdown("<div class='table-container'>" + styled_df.to_html() + "</div>", unsafe_allow_html=True)
                 else:
                     st.markdown("<p style='color: red;'>No document found with the given criteria.</p>", unsafe_allow_html=True)
+
 
 # Streamlit App Main Function
 def main():
