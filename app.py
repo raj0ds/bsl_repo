@@ -175,7 +175,7 @@ def main_page():
 
                     # Apply Bootstrap styles to the DataFrame
                     styled_df = df.style.set_table_attributes('class="table table-striped table-bordered"').set_table_styles([
-                        {'selector': 'thead th', 'props': [('background-color', '#007bff'), ('color', 'white')]},
+                        {'selector': 'thead th', 'props': [('background-color', 'rgb(241 6 201)'), ('color', 'white')]},
                         {'selector': 'tbody td', 'props': [('padding', '10px'), ('border', '1px solid #ddd')]}
                     ])
 
